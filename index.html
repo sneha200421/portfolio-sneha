@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneha Saini - Portfolio</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #121212;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #64b5f6;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #64b5f6;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #e0e0e0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #b0b0b0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #64b5f6;
+            color: #121212;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #42a5f5;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .section-desc {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #b0b0b0;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-img img {
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .skill-category {
+            width: 30%;
+            min-width: 250px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333333;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: #333333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: #64b5f6;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #2d2d2d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tag {
+            background-color: #333333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #b0b0b0;
+        }
+        
+        /* Experience Section */
+        .experience {
+            background-color: #151515;
+        }
+        
+        .experience-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .experience-company {
+            color: #64b5f6;
+            font-weight: 600;
+        }
+        
+        .experience-duration {
+            color: #b0b0b0;
+        }
+        
+        .experience-description ul {
+            padding-left: 20px;
+        }
+        
+        .experience-description li {
+            margin-bottom: 10px;
+        }
+        
+        /* Education Section */
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #333333;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #1e1e1e;
+            border: 4px solid #64b5f6;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #64b5f6;
+            margin-bottom: 10px;
+        }
+        
+        /* Certifications Section */
+        .certifications {
+            background-color: #151515;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .certification-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certification-card i {
+            font-size: 2rem;
+            color: #64b5f6;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info-item {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info-item i {
+            width: 30px;
+            color: #64b5f6;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333333;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #252525;
+            color: #e0e0e0;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #64b5f6;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::before {
+                left: 15px;
+                right: auto;
+            }
+            
+            .education-timeline::before {
+                left: 25px;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background-color: #1e1e1e;
+                width: 100%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: all 0.5s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .skill-category {
+                width: 100%;
+            }
+        }
+        
+        /* Active link style */
+        .nav-links a.active {
+            color: #64b5f6 !important;
+            font-weight: 700;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sneha Saini</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Sneha Saini</h1>
+                <p>Computer Science Student at Sharda University. Passionate about software development, AI/ML, and cybersecurity.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p class="section-desc">Get to know me better.</p>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/main_photo.png" alt="Profile Image">
+                </div>
+                <div class="about-text">
+                    <h3>Who am I?</h3>
+                    <p>I'm a results-driven B.Tech Computer Science student at Sharda University with expertise in software development, AI/ML, and cybersecurity. I'm skilled in designing scalable applications, optimizing efficiency, and ensuring high product quality.</p>
+                    <p>With hands-on experience as a Software Engineering Intern at Escorts Kubota Limited, I've developed applications that boost engagement and improve system performance. I'm passionate about leveraging technology for real-world problem-solving.</p>
+                    <p>My technical toolkit includes various programming languages, web technologies, AI/ML frameworks, and cloud services. I'm committed to continuous learning and expanding my skill set in the ever-evolving tech landscape.</p>
+                    <a href="#contact" class="btn">Let's Connect</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <p class="section-desc">Here are the technologies and tools I've worked with.</p>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Java</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>C++</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React.js</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Firebase</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>AI/ML & Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>TensorFlow</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Scikit-learn</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Git & GitHub</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Docker</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <p class="section-desc">Here are some of the projects I've worked on.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/image5.png" style="width: 60%; height: auto;" alt="X-AI in Financial Decision Making">
+                    </div>
+                    <div class="project-info">
+                        <h3>X-AI in Financial Decision Making - Loan Credit Assessment</h3>
+                        <p>Developed an AI-based model for loan credit assessment using XAI techniques like SHAP and LightGBM, enabling transparent decision-making in financial institutions.</p>
+                        <div class="project-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">XAI</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Finance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/image.png" style="width: 50%; height: auto;" alt="Spam Detection Model">
+                    </div>
+                    <div class="project-info">
+                        <h3>Spam Mail Detection Model</h3>
+                        <p>Built a spam classification model achieving 95% accuracy using TF-IDF, Logistic Regression, and Random Forest. Integrated the model into a web app for real-time email filtering.</p>
+                        <div class="project-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">TF-IDF</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/image2.png" style="width: 30%; height: auto;" alt="Infinite Scroll Posts">
+                    </div>
+                    <div class="project-info">
+                        <h3>Infinite Scroll Posts</h3>
+                        <p>Developed a responsive web app with infinite scrolling and optimized UI/UX, increasing retention by 25%. Implemented efficient data fetching with the Fetch API.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Fetch API</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/image3.png" style="width: 50%; height: auto;" alt="Community Complaint Management App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Community Complaint Management App</h3>
+                        <p>Built an app for tracking community issues with real-time updates via Firebase. Automated complaint categorization for efficient resolution.</p>
+                        <div class="project-tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Dart</span>
+                            <span class="tag">Real-time Database</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/image4.png" style="width: 50%; height: auto;" alt="Social Media App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Social Media App</h3>
+                        <p>Developed a social media application with Android Studio, Java, and Firebase during my internship at Escorts Kubota Limited. Implemented user authentication, post creation, and real-time updates.</p>
+                        <div class="project-tags">
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Mobile Development</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <p class="section-desc">My professional journey so far.</p>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3>Software Engineering Intern</h3>
+                    <span class="experience-company">Escorts Kubota Limited</span>
+                </div>
+                <div class="experience-duration">May 2024 - July 2024 | Faridabad, India</div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Developed a social media app using Android Studio, Java, and Firebase, boosting engagement by 30%.</li>
+                        <li>Integrated manufacturing data processing for product quality assessment.</li>
+                        <li>Reduced error rates by 20% and improved system response time.</li>
+                        <li>Collaborated with cross-functional teams to enhance software development.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <p class="section-desc">My academic journey.</p>
+            
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - 2026</div>
+                        <h3>Bachelor of Technology in Computer Science</h3>
+                        <p>Sharda University, Greater Noida, India</p>
+                        <p>Relevant Coursework: Data Structures and Algorithms, Machine Learning, Cybersecurity, Cloud Computing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <p class="section-desc">Professional certifications I've earned.</p>
+            
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <i class="fab fa-google"></i>
+                    <h3>Google Cloud Learning Services Generative AI track</h3>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fab fa-java"></i>
+                    <h3>Oracle Java Foundation Course</h3>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Testing Websites and Deployment - Infosys</h3>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fab fa-aws"></i>
+                    <h3>AWS Certificate</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-desc">Feel free to reach out to me for collaborations or just a friendly chat.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>snehasaini393@gmail.com</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9625372483</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Faridabad, India</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-university"></i>
+                        <span>Sharda University, Greater Noida</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                </div>
+                </section>
+                
+                <!-- Footer -->
+                <footer>
+                    <div class="container">
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <p>&copy; 2025 Sneha Saini. All rights reserved.</p>
+                    </div>
+                </footer>
+                
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Mobile menu toggle
+                    const menuToggle = document.querySelector('.menu-toggle');
+                    const navLinks = document.querySelector('.nav-links');
+                    
+                    menuToggle.addEventListener('click', function() {
+                        navLinks.classList.toggle('active');
+                    });
+                    
+                    // Close menu when clicking a link on mobile
+                    const navItems = document.querySelectorAll('.nav-links a');
+                    navItems.forEach(item => {
+                        item.addEventListener('click', function() {
+                            navLinks.classList.remove('active');
+                        });
+                    });
+                    
+                    // Active navigation link
+                    const sections = document.querySelectorAll('section');
+                    const navLinksItems = document.querySelectorAll('.nav-links a');
+                    
+                    window.addEventListener('scroll', function() {
+                        let current = '';
+                        sections.forEach(section => {
+                            const sectionTop = section.offsetTop;
+                            const sectionHeight = section.clientHeight;
+                            if (pageYOffset >= sectionTop - 200) {
+                                current = section.getAttribute('id');
+                            }
+                        });
+                        
+                        navLinksItems.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === current) {
+                                link.classList.add('active');
+                            }
+                        });
+                    });
+                    
+                    // Form submission
+                    const contactForm = document.getElementById('contactForm');
+                    if (contactForm) {
+                        contactForm.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            // Here you would normally handle the form submission
+                            // For demonstration purposes, let's just show an alert
+                            alert('Thank you for your message! I will get back to you soon.');
+                            contactForm.reset();
+                        });
+                    }
+                });
+                </script>
+                </body>
+                </html>
